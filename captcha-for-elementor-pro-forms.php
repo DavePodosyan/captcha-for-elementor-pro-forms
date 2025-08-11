@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Plugin Name: Captcha for Elementor Pro Forms
  * Plugin URI: https://github.com/DavePodosyan/captcha-for-elementor-pro-forms
  * Description: Adds hCaptcha and Cloudflare Turnstile support to Elementor Pro forms with seamless integration.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Dave Podosyan
  * Author URI: https://github.com/DavePodosyan
  * License: GPL v2 or later
@@ -21,7 +22,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!defined('CEPF_VERSION')) {
-    define('CEPF_VERSION', '1.0.0');
+    define('CEPF_VERSION', '1.0.1');
 }
 
 if (!defined('CEPF_PLUGIN_FILE')) {
@@ -73,8 +74,9 @@ class Captcha_Elementor_Pro_Forms
             return false;
         }
 
-        // Check for Elementor Pro forms capability (works with both Pro and Pro Elements)
-        if (!$this->has_elementor_pro_forms()) {
+        // Check for Elementor Pro
+
+        if (!defined('ELEMENTOR_PRO_VERSION')) {
             add_action('admin_notices', [$this, 'admin_notice_missing_elementor_pro']);
             return false;
         }
@@ -162,7 +164,6 @@ class Captcha_Elementor_Pro_Forms
 
         printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
     }
-
 }
 
 Captcha_Elementor_Pro_Forms::get_instance();
