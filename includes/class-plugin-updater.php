@@ -154,7 +154,7 @@ class CEPF_Plugin_Updater
         $download_url = null;
         if (isset($data['assets']) && is_array($data['assets'])) {
             foreach ($data['assets'] as $asset) {
-                if (strpos($asset['name'], '.zip') !== false) {
+                if ($asset['name'] === 'captcha-for-elementor-pro-forms.zip') {
                     $download_url = $asset['browser_download_url'];
                     break;
                 }

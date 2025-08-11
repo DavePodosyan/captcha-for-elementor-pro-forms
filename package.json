@@ -25,7 +25,7 @@
     "create-dirs": "mkdir -p dist/captcha-for-elementor-pro-forms releases",
     "copy-plugin-files": "cp captcha-for-elementor-pro-forms.php readme.txt uninstall.php dist/captcha-for-elementor-pro-forms/ && cp -r assets includes dist/captcha-for-elementor-pro-forms/",
     "create-languages-dir": "mkdir -p dist/captcha-for-elementor-pro-forms/languages",
-    "create-zip": "cd dist && zip -r ../releases/captcha-for-elementor-pro-forms-$npm_package_version.zip captcha-for-elementor-pro-forms/",
+    "create-zip": "cd dist && zip -r ../releases/captcha-for-elementor-pro-forms.zip captcha-for-elementor-pro-forms/",
     "dev": "npm run lint && npm run build",
     "lint": "npm run lint:js && npm run lint:format",
     "lint:js": "eslint assets/js/ --ext .js",

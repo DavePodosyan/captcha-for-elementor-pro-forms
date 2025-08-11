@@ -13,7 +13,7 @@
 
 ## 🚀 Quick Start
 
-### [📥 Download Latest Release](https://github.com/DavePodosyan/captcha-for-elementor-pro-forms/releases/latest/download/captcha-for-elementor-pro-forms-1.0.2.zip)
+### [📥 Download Latest Release](https://github.com/DavePodosyan/captcha-for-elementor-pro-forms/releases/latest)
 
 1. **Download** the plugin ZIP from the link above
 2. **Upload** to WordPress via `Plugins > Add New > Upload Plugin`
@@ -101,7 +101,7 @@
 
 ```bash
 # Download the latest release
-wget https://github.com/DavePodosyan/captcha-for-elementor-pro-forms/releases/latest/download/captcha-for-elementor-pro-forms-1.0.2.zip
+wget https://github.com/DavePodosyan/captcha-for-elementor-pro-forms/releases/latest/download/captcha-for-elementor-pro-forms.zip
 
 # Upload via WordPress Admin > Plugins > Add New > Upload Plugin
 ```
