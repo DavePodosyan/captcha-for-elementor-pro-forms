@@ -4,7 +4,7 @@
  * Plugin Name: Captcha for Elementor Pro Forms
  * Plugin URI: https://github.com/DavePodosyan/captcha-for-elementor-pro-forms
  * Description: Adds hCaptcha and Cloudflare Turnstile support to Elementor Pro forms with seamless integration.
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: Dave Podosyan
  * Author URI: https://github.com/DavePodosyan
  * License: GPL v2 or later
@@ -12,7 +12,7 @@
  * Text Domain: captcha-elementor-pro
  * Domain Path: /languages
  * Requires at least: 5.0
- * Tested up to: 6.6
+ * Tested up to: 6.8
  * Requires PHP: 7.4
  * Network: false
  */
@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!defined('CEPF_VERSION')) {
-    define('CEPF_VERSION', '1.0.4');
+    define('CEPF_VERSION', '1.0.5');
 }
 
 if (!defined('CEPF_PLUGIN_FILE')) {
