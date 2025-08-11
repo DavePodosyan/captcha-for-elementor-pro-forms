@@ -18,20 +18,20 @@ export default [
                 hcaptcha: 'readonly',
                 turnstile: 'readonly',
                 setTimeout: 'readonly',
-                clearTimeout: 'readonly'
-            }
+                clearTimeout: 'readonly',
+            },
         },
         rules: {
             'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
             'no-console': 'warn',
             'prefer-const': 'error',
             'no-var': 'error',
-            'eqeqeq': 'error',
-            'curly': 'error',
+            eqeqeq: 'error',
+            curly: 'error',
             'brace-style': ['error', '1tbs'],
-            'indent': ['error', 4],
-            'quotes': ['error', 'single'],
-            'semi': ['error', 'always']
-        }
-    }
+            indent: ['error', 4],
+            quotes: ['error', 'single'],
+            semi: ['error', 'always'],
+        },
+    },
 ];

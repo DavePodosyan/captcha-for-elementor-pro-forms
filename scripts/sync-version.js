@@ -14,10 +14,7 @@ const pluginFile = 'captcha-for-elementor-pro-forms.php';
 let pluginContent = fs.readFileSync(pluginFile, 'utf8');
 
 // Update Version header
-pluginContent = pluginContent.replace(
-    /(\* Version:\s+)[\d.]+/,
-    `$1${version}`
-);
+pluginContent = pluginContent.replace(/(\* Version:\s+)[\d.]+/, `$1${version}`);
 
 // Update CEPF_VERSION constant
 pluginContent = pluginContent.replace(
@@ -32,10 +29,7 @@ const readmeFile = 'readme.txt';
 let readmeContent = fs.readFileSync(readmeFile, 'utf8');
 
 // Update Stable tag
-readmeContent = readmeContent.replace(
-    /(Stable tag:\s+)[\d.]+/,
-    `$1${version}`
-);
+readmeContent = readmeContent.replace(/(Stable tag:\s+)[\d.]+/, `$1${version}`);
 
 fs.writeFileSync(readmeFile, readmeContent);
 

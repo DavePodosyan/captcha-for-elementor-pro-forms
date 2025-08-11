@@ -4,8 +4,8 @@ if (typeof window.ElementorTurnstileHandler === 'undefined') {
             return {
                 selectors: {
                     turnstile: '.elementor-cf-turnstile:last',
-                    submit: 'button[type="submit"]'
-                }
+                    submit: 'button[type="submit"]',
+                },
             };
         }
 
@@ -53,11 +53,11 @@ if (typeof window.ElementorTurnstileHandler === 'undefined') {
                     if (!$input.length) {
                         $input = jQuery('<input>', {
                             type: 'hidden',
-                            name: 'cf-turnstile-response'
+                            name: 'cf-turnstile-response',
                         }).appendTo(this.elements.$form);
                     }
                     $input.val(token);
-                }
+                },
             });
 
             this.elements.$form.on('reset error', () => {

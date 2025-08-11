@@ -4,8 +4,8 @@ if (typeof window.ElementorHcaptchaHandler === 'undefined') {
             return {
                 selectors: {
                     hcaptcha: '.elementor-hcaptcha:last',
-                    submit: 'button[type="submit"]'
-                }
+                    submit: 'button[type="submit"]',
+                },
             };
         }
 
@@ -53,11 +53,11 @@ if (typeof window.ElementorHcaptchaHandler === 'undefined') {
                     if (!$input.length) {
                         $input = jQuery('<input>', {
                             type: 'hidden',
-                            name: 'hcaptcha-response'
+                            name: 'hcaptcha-response',
                         }).appendTo(this.elements.$form);
                     }
                     $input.val(token);
-                }
+                },
             });
 
             this.elements.$form.on('reset error', () => {

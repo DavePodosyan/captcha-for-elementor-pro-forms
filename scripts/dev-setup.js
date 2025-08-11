@@ -7,7 +7,7 @@ console.log('🚀 Setting up development environment...');
 
 // Ensure required directories exist
 const dirs = ['dist', 'releases', 'languages'];
-dirs.forEach(dir => {
+dirs.forEach((dir) => {
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
         console.log(`✅ Created ${dir}/ directory`);
