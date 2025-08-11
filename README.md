@@ -175,16 +175,6 @@ npm run dev
 
 ---
 
-## 📈 Roadmap
-
-- [ ] **Google reCAPTCHA v3** support
-- [ ] **Custom styling options** for CAPTCHA widgets
-- [ ] **Analytics dashboard** for CAPTCHA statistics  
-- [ ] **Multilingual support** with translation files
-- [ ] **Form-specific settings** override global settings
-
----
-
 ## 🆘 Support & Documentation
 
 ### 📚 **Documentation**
