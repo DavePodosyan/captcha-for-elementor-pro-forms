@@ -109,6 +109,7 @@ class Captcha_Elementor_Pro_Forms
         require_once CEPF_PLUGIN_DIR . 'includes/class-base-captcha-handler.php';
         require_once CEPF_PLUGIN_DIR . 'includes/class-hcaptcha-handler.php';
         require_once CEPF_PLUGIN_DIR . 'includes/class-turnstile-handler.php';
+        require_once CEPF_PLUGIN_DIR . 'includes/class-plugin-updater.php';
     }
 
     private function init_handlers()
@@ -117,6 +118,9 @@ class Captcha_Elementor_Pro_Forms
             new CEPF_HCaptcha_Handler();
             new CEPF_Turnstile_Handler();
         });
+
+        // Initialize plugin updater
+        new CEPF_Plugin_Updater(CEPF_PLUGIN_FILE, 'DavePodosyan', 'captcha-for-elementor-pro-forms');
     }
 
     public function activate()
