@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { exec } from 'child_process';
 
 console.log('🚀 Setting up development environment...');
 
@@ -17,7 +18,6 @@ dirs.forEach((dir) => {
 // Make scripts executable (if on Unix-like systems)
 if (process.platform !== 'win32') {
     try {
-        const { exec } = require('child_process');
         exec('chmod +x scripts/*.js', (error) => {
             if (error) {
                 console.log('ℹ️  Could not make scripts executable (this is OK on some systems)');

@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Read version from package.json
 const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
