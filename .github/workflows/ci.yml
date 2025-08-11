@@ -34,7 +34,7 @@ jobs:
 
             - name: Check if build artifacts exist
               run: |
-                  if [ ! -f "releases/captcha-for-elementor-pro-forms-$(node -p "require('./package.json').version").zip" ]; then
+                  if [ ! -f "releases/captcha-for-elementor-pro-forms.zip" ]; then
                     echo "Release ZIP file not found!"
                     exit 1
                   fi
