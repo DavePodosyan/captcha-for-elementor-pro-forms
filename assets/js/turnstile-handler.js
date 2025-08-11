@@ -33,7 +33,9 @@ if (typeof window.ElementorTurnstileHandler === 'undefined') {
         renderTurnstile() {
             const el = this.elements.$turnstile[0];
 
-            if (!el || el.dataset.turnstileRendered === 'true') return;
+            if (!el || el.dataset.turnstileRendered === 'true') {
+                return;
+            }
 
             if (!jQuery(el).is(':visible')) {
                 setTimeout(() => this.renderTurnstile(), 200);

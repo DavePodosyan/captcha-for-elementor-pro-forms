@@ -16,7 +16,9 @@ export default [
                 elementorModules: 'readonly',
                 elementorFrontend: 'readonly',
                 hcaptcha: 'readonly',
-                turnstile: 'readonly'
+                turnstile: 'readonly',
+                setTimeout: 'readonly',
+                clearTimeout: 'readonly'
             }
         },
         rules: {

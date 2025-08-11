@@ -33,7 +33,9 @@ if (typeof window.ElementorHcaptchaHandler === 'undefined') {
         renderHcaptcha() {
             const el = this.elements.$hcaptcha[0];
 
-            if (!el || el.dataset.hcaptchaRendered === 'true') return;
+            if (!el || el.dataset.hcaptchaRendered === 'true') {
+                return;
+            }
 
             if (!jQuery(el).is(':visible')) {
                 setTimeout(() => this.renderHcaptcha(), 200);
