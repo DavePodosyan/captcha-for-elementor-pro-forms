@@ -32,9 +32,10 @@ Captcha for Elementor Pro Forms extends your Elementor Pro forms with advanced C
 
 1. Upload the plugin files to the `/wp-content/plugins/captcha-for-elementor-pro-forms` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Go to **Elementor > Settings > Integrations** to configure your CAPTCHA providers.
-4. Enter your API keys for the CAPTCHA services you want to use.
-5. Add CAPTCHA fields to your Elementor forms just like you would add reCAPTCHA fields.
+3. **Important**: This plugin requires Elementor Pro or Pro Elements as it needs the Form widget functionality.
+4. Go to **Elementor > Settings > Integrations** to configure your CAPTCHA providers.
+5. Enter your API keys for the CAPTCHA services you want to use.
+6. Add CAPTCHA fields to your Elementor forms just like you would add reCAPTCHA fields.
 
 == Configuration ==
 

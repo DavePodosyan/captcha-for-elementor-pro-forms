@@ -13,7 +13,6 @@
  * Requires at least: 5.0
  * Tested up to: 6.6
  * Requires PHP: 7.4
- * Requires Plugins: elementor-pro
  * Network: false
  */
 
@@ -74,7 +73,8 @@ class Captcha_Elementor_Pro_Forms
             return false;
         }
 
-        if (!class_exists('ElementorPro\\Plugin')) {
+        // Check for Elementor Pro forms capability (works with both Pro and Pro Elements)
+        if (!$this->has_elementor_pro_forms()) {
             add_action('admin_notices', [$this, 'admin_notice_missing_elementor_pro']);
             return false;
         }
@@ -85,6 +85,12 @@ class Captcha_Elementor_Pro_Forms
         }
 
         return true;
+    }
+
+    private function has_elementor_pro_forms()
+    {
+        // Check for forms capability - works with both Elementor Pro and Pro Elements
+        return class_exists('ElementorPro\\Modules\\Forms\\Module');
     }
 
     private function load_textdomain()
@@ -113,14 +119,8 @@ class Captcha_Elementor_Pro_Forms
 
     public function activate()
     {
-        if (!$this->check_dependencies()) {
-            deactivate_plugins(plugin_basename(CEPF_PLUGIN_FILE));
-            wp_die(
-                esc_html__('Captcha for Elementor Pro Forms requires Elementor Pro to be installed and activated.', 'captcha-elementor-pro'),
-                esc_html__('Plugin Activation Error', 'captcha-elementor-pro'),
-                ['back_link' => true]
-            );
-        }
+        // Allow activation but show notices for missing dependencies
+        // This is more user-friendly than preventing activation entirely
     }
 
     public function deactivate()
@@ -142,9 +142,10 @@ class Captcha_Elementor_Pro_Forms
     public function admin_notice_missing_elementor_pro()
     {
         $message = sprintf(
-            esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'captcha-elementor-pro'),
+            esc_html__('"%1$s" requires "%2$s" or "%3$s" to be installed and activated.', 'captcha-elementor-pro'),
             '<strong>' . esc_html__('Captcha for Elementor Pro Forms', 'captcha-elementor-pro') . '</strong>',
-            '<strong>' . esc_html__('Elementor Pro', 'captcha-elementor-pro') . '</strong>'
+            '<strong>' . esc_html__('Elementor Pro', 'captcha-elementor-pro') . '</strong>',
+            '<strong>' . esc_html__('Pro Elements', 'captcha-elementor-pro') . '</strong>'
         );
 
         printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
@@ -161,6 +162,7 @@ class Captcha_Elementor_Pro_Forms
 
         printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
     }
+
 }
 
 Captcha_Elementor_Pro_Forms::get_instance();
