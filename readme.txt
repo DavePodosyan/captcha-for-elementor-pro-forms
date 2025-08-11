@@ -86,6 +86,27 @@ The plugin only stores your CAPTCHA API keys in the WordPress options table. No 
 
 == Changelog ==
 
+= 1.0.4 =
+* Added automatic plugin update system from GitHub releases
+* Improved Pro Elements compatibility and dependency checking
+* Enhanced layout stability with CAPTCHA field styling
+* Updated documentation and GitHub README with better presentation
+
+= 1.0.3 =
+* Added GitHub-based plugin updater for seamless WordPress dashboard updates
+* Fixed dependency checking for Pro Elements compatibility
+* Improved user experience with flexible installation requirements
+
+= 1.0.2 =
+* Enhanced Pro Elements support and compatibility
+* Improved admin notices and dependency checking
+* Better user guidance for plugin requirements
+
+= 1.0.1 =
+* Added Pro Elements compatibility alongside Elementor Pro
+* Improved dependency checking and user notifications
+* Enhanced plugin activation flow
+
 = 1.0.0 =
 * Initial release
 * hCaptcha integration with Elementor Pro forms
