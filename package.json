@@ -1,0 +1,50 @@
+{
+  "name": "captcha-for-elementor-pro-forms",
+  "version": "1.0.0",
+  "description": "Adds hCaptcha and Cloudflare Turnstile support to Elementor Pro forms",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DavePodosyan/captcha-for-elementor-pro-forms.git"
+  },
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "elementor",
+    "captcha",
+    "hcaptcha",
+    "turnstile",
+    "cloudflare"
+  ],
+  "author": "Dave Podosyan",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "npm run clean && npm run copy-files && npm run create-zip",
+    "clean": "rimraf dist releases",
+    "copy-files": "npm run create-dirs && npm run copy-plugin-files && npm run create-languages-dir",
+    "create-dirs": "mkdir -p dist/captcha-for-elementor-pro-forms releases",
+    "copy-plugin-files": "cp captcha-for-elementor-pro-forms.php readme.txt uninstall.php dist/captcha-for-elementor-pro-forms/ && cp -r assets includes dist/captcha-for-elementor-pro-forms/",
+    "create-languages-dir": "mkdir -p dist/captcha-for-elementor-pro-forms/languages",
+    "create-zip": "cd dist && zip -r ../releases/captcha-for-elementor-pro-forms-$npm_package_version.zip captcha-for-elementor-pro-forms/",
+    "dev": "npm run lint && npm run build",
+    "lint": "npm run lint:js && npm run lint:format",
+    "lint:js": "eslint assets/js/ --ext .js",
+    "lint:format": "prettier --check .",
+    "format": "prettier --write .",
+    "watch": "npm run lint:js -- --watch",
+    "version-sync": "node scripts/sync-version.js",
+    "prerelease": "npm run version-sync && npm run lint && npm run build",
+    "release": "npm run prerelease && echo 'Release ZIP created in releases/ directory'",
+    "test": "echo 'No tests yet' && exit 0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.0",
+    "rimraf": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}

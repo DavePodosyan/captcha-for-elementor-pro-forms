@@ -1,0 +1,33 @@
+{
+    "semi": true,
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 100,
+    "tabWidth": 4,
+    "useTabs": false,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "endOfLine": "lf",
+    "overrides": [
+        {
+            "files": "*.php",
+            "options": {
+                "tabWidth": 4,
+                "useTabs": false
+            }
+        },
+        {
+            "files": "*.js",
+            "options": {
+                "tabWidth": 4,
+                "singleQuote": true
+            }
+        },
+        {
+            "files": "*.json",
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
+}

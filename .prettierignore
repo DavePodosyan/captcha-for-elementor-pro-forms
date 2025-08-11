@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build files
+dist/
+releases/
+
+# WordPress files
+*.pot
+*.po
+*.mo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
