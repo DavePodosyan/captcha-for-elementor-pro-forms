@@ -9,7 +9,10 @@ jQuery(document).ready(function ($) {
      */
     function toggleRequiredField($fieldTypeSelect) {
         const fieldType = $fieldTypeSelect.val();
-        const $requiredRow = $fieldTypeSelect.closest('.elementor-repeater-fields').find('[data-setting="required"]').closest('.elementor-control-required:not(.elementor-hidden-control)');
+        const $requiredRow = $fieldTypeSelect
+            .closest('.elementor-repeater-fields')
+            .find('[data-setting="required"]')
+            .closest('.elementor-control-required:not(.elementor-hidden-control)');
 
         if (CAPTCHA_FIELD_TYPES.includes(fieldType)) {
             $requiredRow.hide();
@@ -35,15 +38,17 @@ jQuery(document).ready(function ($) {
         // Monitor for new fields added
         const observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
-                $(mutation.addedNodes).find('select[data-setting="field_type"]').each(function () {
-                    toggleRequiredField($(this));
-                });
+                $(mutation.addedNodes)
+                    .find('select[data-setting="field_type"]')
+                    .each(function () {
+                        toggleRequiredField($(this));
+                    });
             });
         });
 
         observer.observe(document.body, {
             childList: true,
-            subtree: true
+            subtree: true,
         });
     }
 
