@@ -33,6 +33,7 @@
     "format": "prettier --write .",
     "watch": "npm run lint:js -- --watch",
     "version-sync": "node scripts/sync-version.js",
+    "version": "npm run version-sync && git add captcha-for-elementor-pro-forms.php readme.txt",
     "prerelease": "npm run version-sync && npm run lint && npm run build",
     "release": "npm run prerelease && echo 'Release ZIP created in releases/ directory'",
     "test": "echo 'No tests yet' && exit 0"
