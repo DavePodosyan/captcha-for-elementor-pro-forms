@@ -2,7 +2,7 @@ jQuery(document).ready(function ($) {
     'use strict';
 
     // CAPTCHA field types that should not show required toggle
-    const CAPTCHA_FIELD_TYPES = ['hcaptcha', 'turnstile'];
+    const CAPTCHA_FIELD_TYPES = ['hcaptcha', 'cf_turnstile'];
 
     /**
      * Hide or show required field based on field type
