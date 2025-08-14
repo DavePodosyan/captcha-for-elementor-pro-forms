@@ -19,6 +19,7 @@ export default [
                 turnstile: 'readonly',
                 setTimeout: 'readonly',
                 clearTimeout: 'readonly',
+                MutationObserver: 'readonly',
             },
         },
         rules: {
