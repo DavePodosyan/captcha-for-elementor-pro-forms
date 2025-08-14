@@ -74,7 +74,7 @@ abstract class CEPF_Base_Captcha_Handler
             static::get_script_name(),
             static::get_captcha_api_url(),
             [],
-            CEPF_VERSION,
+            false,
             true
         );
         
@@ -95,6 +95,25 @@ abstract class CEPF_Base_Captcha_Handler
 
         wp_enqueue_script(static::get_script_name());
         wp_enqueue_script(static::get_handler_script_name());
+    }
+
+    public function enqueue_admin_scripts()
+    {
+        static $admin_script_enqueued = false;
+        
+        if ($admin_script_enqueued) {
+            return;
+        }
+        
+        wp_enqueue_script(
+            'cepf-admin-editor',
+            CEPF_PLUGIN_URL . 'assets/js/admin-editor.js',
+            ['jquery', 'elementor-editor'],
+            CEPF_VERSION,
+            true
+        );
+        
+        $admin_script_enqueued = true;
     }
 
     public function validation($record, $ajax_handler)
@@ -203,6 +222,7 @@ abstract class CEPF_Base_Captcha_Handler
     {
         if (static::get_captcha_name() === $item['field_type']) {
             $item['field_label'] = false;
+            $item['required'] = false;
         }
 
         return $item;
@@ -224,6 +244,7 @@ abstract class CEPF_Base_Captcha_Handler
 
         if (is_admin()) {
             add_action('elementor/admin/after_create_settings/' . Settings::PAGE_ID, [$this, 'register_admin_fields']);
+            add_action('elementor/editor/before_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
         }
     }
 }
