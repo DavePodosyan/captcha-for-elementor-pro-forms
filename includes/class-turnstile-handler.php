@@ -104,7 +104,7 @@ class CEPF_Turnstile_Handler extends CEPF_Base_Captcha_Handler
         if (static::is_enabled()) {
             $this->enqueue_scripts();
             $this->add_render_attributes($item, $item_index, $widget);
-            $captcha_html .= '<div ' . $widget->get_render_attribute_string($captcha_name . $item_index) . ' style="min-height:65px"></div>';
+            $captcha_html .= '<div ' . $widget->get_render_attribute_string($captcha_name . $item_index) . '></div>';
         } elseif (current_user_can('manage_options')) {
             $captcha_html .= '<div class="elementor-alert elementor-alert-info">';
             $captcha_html .= static::get_setup_message();

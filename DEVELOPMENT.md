@@ -68,6 +68,7 @@ To update version:
 ```bash
 npm version patch  # or minor, major
 npm run version-sync
+git push origin main & git push --tags
 ```
 
 ## Release Process
