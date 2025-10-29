@@ -5,6 +5,9 @@ if (!defined('ABSPATH')) {
 }
 
 use Elementor\Settings;
+use Elementor\Widget_Base;
+use ElementorPro\Plugin;
+use Elementor\Controls_Manager;
 
 class CEPF_Turnstile_Handler extends CEPF_Base_Captcha_Handler
 {
@@ -135,8 +138,9 @@ class CEPF_Turnstile_Handler extends CEPF_Base_Captcha_Handler
     {
         $captcha_name = static::get_captcha_name();
         $widget->add_render_attribute($captcha_name . $item_index, [
-            'data-theme' => 'light',
+            'data-theme' => $item[$this->get_captcha_name() . '_style'] ?? 'light',
             'data-size' => 'flexible',
+            'data-appearance' => $item[$this->get_captcha_name() . '_appearance'] ?? 'always',
         ]);
     }
 
@@ -145,5 +149,67 @@ class CEPF_Turnstile_Handler extends CEPF_Base_Captcha_Handler
         $field_types['cf_turnstile'] = esc_html__('Cloudflare Turnstile', 'captcha-elementor-pro');
 
         return $field_types;
+    }
+
+    public function update_controls(Widget_Base $widget)
+    {
+        $elementor = Plugin::elementor();
+
+        $control_data = $elementor->controls_manager->get_control_from_stack($widget->get_unique_name(), 'form_fields');
+
+        if (is_wp_error($control_data)) {
+            return;
+        }
+
+        foreach ($control_data['fields'] as $index => $field) {
+            if ('required' === $field['name'] || 'width' === $field['name']) {
+                $control_data['fields'][$index]['conditions']['terms'][] = [
+                    'name' => 'field_type',
+                    'operator' => '!in',
+                    'value' => [
+                        $this->get_captcha_name(),
+                    ],
+                ];
+            }
+        }
+
+        $field_controls = [
+            $this->get_captcha_name() . '_style' => [
+                'name' => $this->get_captcha_name() . '_style',
+                'label' => esc_html__('Style', 'captcha-elementor-pro'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'light' => esc_html__('Light', 'captcha-elementor-pro'),
+                    'dark' => esc_html__('Dark', 'captcha-elementor-pro'),
+                ],
+                'default' => 'light',
+                'condition' => [
+                    'field_type' => $this->get_captcha_name(),
+                ],
+                'tab' => 'content',
+                'inner_tab' => 'form_fields_content_tab',
+                'tabs_wrapper' => 'form_fields_tabs',
+            ],
+            $this->get_captcha_name() . '_appearance' => [
+                'name' => $this->get_captcha_name() . '_appearance',
+                'label' => esc_html__('Appearance', 'captcha-elementor-pro'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'always' => esc_html__('Always', 'captcha-elementor-pro'),
+                    'interaction-only' => esc_html__('Interaction Only', 'captcha-elementor-pro'),
+                ],
+                'default' => 'always',
+                'condition' => [
+                    'field_type' => $this->get_captcha_name(),
+                ],
+                'tab' => 'content',
+                'inner_tab' => 'form_fields_content_tab',
+                'tabs_wrapper' => 'form_fields_tabs',
+            ]
+
+        ];
+
+        $control_data['fields'] = $this->inject_field_controls($control_data['fields'], $field_controls);
+        $widget->update_control('form_fields', $control_data);
     }
 }

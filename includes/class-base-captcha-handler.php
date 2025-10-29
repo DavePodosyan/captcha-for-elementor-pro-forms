@@ -5,6 +5,7 @@ if (!defined('ABSPATH')) {
 }
 
 use Elementor\Settings;
+use Elementor\Widget_Base;
 use ElementorPro\Core\Utils;
 use ElementorPro\Plugin;
 
@@ -77,7 +78,7 @@ abstract class CEPF_Base_Captcha_Handler
             false,
             true
         );
-        
+
         wp_register_script(
             static::get_handler_script_name(),
             CEPF_PLUGIN_URL . 'assets/js/' . static::get_handler_js_file(),
@@ -100,11 +101,11 @@ abstract class CEPF_Base_Captcha_Handler
     public function enqueue_admin_scripts()
     {
         static $admin_script_enqueued = false;
-        
+
         if ($admin_script_enqueued) {
             return;
         }
-        
+
         wp_enqueue_script(
             'cepf-admin-editor',
             CEPF_PLUGIN_URL . 'assets/js/admin-editor.js',
@@ -112,7 +113,7 @@ abstract class CEPF_Base_Captcha_Handler
             CEPF_VERSION,
             true
         );
-        
+
         $admin_script_enqueued = true;
     }
 
@@ -218,6 +219,8 @@ abstract class CEPF_Base_Captcha_Handler
 
     abstract public function add_field_type($field_types);
 
+    abstract public function update_controls(Widget_Base $widget);
+
     public function filter_field_item($item)
     {
         if (static::get_captcha_name() === $item['field_type']) {
@@ -236,6 +239,8 @@ abstract class CEPF_Base_Captcha_Handler
         add_action('elementor_pro/forms/render_field/' . static::get_captcha_name(), [$this, 'render_field'], 10, 3);
         add_filter('elementor_pro/forms/render/item', [$this, 'filter_field_item']);
         add_filter('elementor_pro/editor/localize_settings', [$this, 'localize_settings']);
+        add_action('elementor/element/form/section_form_fields/before_section_end', [$this, 'update_controls']);
+
 
         if (static::is_enabled()) {
             add_action('elementor_pro/forms/validation', [$this, 'validation'], 10, 2);
@@ -246,5 +251,17 @@ abstract class CEPF_Base_Captcha_Handler
             add_action('elementor/admin/after_create_settings/' . Settings::PAGE_ID, [$this, 'register_admin_fields']);
             add_action('elementor/editor/before_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
         }
+    }
+
+    public function inject_field_controls($array, $controls_to_inject)
+    {
+        $keys = array_keys($array);
+        $key_index = array_search('required', $keys) + 1;
+
+        return array_merge(
+            array_slice($array, 0, $key_index, true),
+            $controls_to_inject,
+            array_slice($array, $key_index, null, true)
+        );
     }
 }
