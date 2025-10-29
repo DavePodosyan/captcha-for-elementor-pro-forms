@@ -51,30 +51,30 @@ class CEPF_HCaptcha_Handler extends CEPF_Base_Captcha_Handler
 
     public static function get_setup_message()
     {
-        return esc_html__('To use hCaptcha, you need to add the API Key and complete the setup process in Dashboard > Elementor > Settings > Integrations > hCaptcha.', 'captcha-elementor-pro');
+        return esc_html__('To use hCaptcha, you need to add the API Key and complete the setup process in Dashboard > Elementor > Settings > Integrations > hCaptcha.', 'captcha-for-elementor-pro-forms');
     }
 
     public function register_admin_fields(Settings $settings)
     {
         $settings->add_section(Settings::TAB_INTEGRATIONS, static::get_captcha_name(), [
-            'label' => esc_html__('hCaptcha', 'captcha-elementor-pro'),
+            'label' => esc_html__('hCaptcha', 'captcha-for-elementor-pro-forms'),
             'callback' => function () {
                 echo sprintf(
                     /* translators: 1: Link opening tag, 2: Link closing tag. */
-                    esc_html__('%1$shCaptcha%2$s is a CAPTCHA solution that protects your website from bots while ensuring a seamless user experience.', 'captcha-elementor-pro'),
+                    esc_html__('%1$shCaptcha%2$s is a CAPTCHA solution that protects your website from bots while ensuring a seamless user experience.', 'captcha-for-elementor-pro-forms'),
                     '<a href="https://www.hcaptcha.com/" target="_blank">',
                     '</a>'
                 );
             },
             'fields' => [
                 'pro_hcaptcha_site_key' => [
-                    'label' => esc_html__('Site Key', 'captcha-elementor-pro'),
+                    'label' => esc_html__('Site Key', 'captcha-for-elementor-pro-forms'),
                     'field_args' => [
                         'type' => 'text',
                     ],
                 ],
                 'pro_hcaptcha_secret_key' => [
-                    'label' => esc_html__('Secret Key', 'captcha-elementor-pro'),
+                    'label' => esc_html__('Secret Key', 'captcha-for-elementor-pro-forms'),
                     'field_args' => [
                         'type' => 'text',
                     ],
@@ -86,16 +86,16 @@ class CEPF_HCaptcha_Handler extends CEPF_Base_Captcha_Handler
     protected function get_error_messages()
     {
         return [
-            'missing-input-secret' => esc_html__('The secret parameter is missing.', 'captcha-elementor-pro'),
-            'invalid-input-secret' => esc_html__('The secret parameter is invalid or malformed.', 'captcha-elementor-pro'),
-            'missing-input-response' => esc_html__('The response parameter is missing.', 'captcha-elementor-pro'),
-            'invalid-input-response' => esc_html__('The response parameter is invalid or malformed.', 'captcha-elementor-pro'),
+            'missing-input-secret' => esc_html__('The secret parameter is missing.', 'captcha-for-elementor-pro-forms'),
+            'invalid-input-secret' => esc_html__('The secret parameter is invalid or malformed.', 'captcha-for-elementor-pro-forms'),
+            'missing-input-response' => esc_html__('The response parameter is missing.', 'captcha-for-elementor-pro-forms'),
+            'invalid-input-response' => esc_html__('The response parameter is invalid or malformed.', 'captcha-for-elementor-pro-forms'),
         ];
     }
 
     protected function get_validation_error_message()
     {
-        return esc_html__('Invalid form, hCaptcha validation failed.', 'captcha-elementor-pro');
+        return esc_html__('Invalid form, hCaptcha validation failed.', 'captcha-for-elementor-pro-forms');
     }
 
     public function render_field($item, $item_index, $widget)
@@ -145,7 +145,7 @@ class CEPF_HCaptcha_Handler extends CEPF_Base_Captcha_Handler
 
     public function add_field_type($field_types)
     {
-        $field_types['hcaptcha'] = esc_html__('hCaptcha', 'captcha-elementor-pro');
+        $field_types['hcaptcha'] = esc_html__('hCaptcha', 'captcha-for-elementor-pro-forms');
 
         return $field_types;
     }
@@ -175,11 +175,11 @@ class CEPF_HCaptcha_Handler extends CEPF_Base_Captcha_Handler
         $field_controls = [
             $this->get_captcha_name() . '_style' => [
                 'name' => $this->get_captcha_name() . '_style',
-                'label' => esc_html__('Style', 'captcha-elementor-pro'),
+                'label' => esc_html__('Style', 'captcha-for-elementor-pro-forms'),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'light' => esc_html__('Light', 'captcha-elementor-pro'),
-                    'dark' => esc_html__('Dark', 'captcha-elementor-pro'),
+                    'light' => esc_html__('Light', 'captcha-for-elementor-pro-forms'),
+                    'dark' => esc_html__('Dark', 'captcha-for-elementor-pro-forms'),
                 ],
                 'default' => 'light',
                 'condition' => [

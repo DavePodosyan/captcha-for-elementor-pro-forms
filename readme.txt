@@ -2,7 +2,7 @@
 Contributors: davepodosyan
 Tags: elementor, captcha, hcaptcha, turnstile, cloudflare, security, forms, spam protection
 Requires at least: 5.0
-Tested up to: 6.6
+Tested up to: 6.8
 Requires PHP: 7.4
 Stable tag: 1.0.13
 License: GPLv2 or later

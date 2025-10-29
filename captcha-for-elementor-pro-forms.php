@@ -9,12 +9,11 @@
  * Author URI: https://github.com/DavePodosyan
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: captcha-elementor-pro
+ * Text Domain: captcha-for-elementor-pro-forms
  * Domain Path: /languages
  * Requires at least: 5.0
  * Tested up to: 6.8
  * Requires PHP: 7.4
- * Network: false
  */
 
 if (!defined('ABSPATH')) {
@@ -62,7 +61,7 @@ class Captcha_Elementor_Pro_Forms
             return;
         }
 
-        $this->load_textdomain();
+        // $this->load_textdomain();
         $this->include_files();
         $this->init_handlers();
     }
@@ -98,7 +97,7 @@ class Captcha_Elementor_Pro_Forms
     private function load_textdomain()
     {
         load_plugin_textdomain(
-            'captcha-elementor-pro',
+            'captcha-for-elementor-pro-forms',
             false,
             dirname(plugin_basename(CEPF_PLUGIN_FILE)) . '/languages/'
         );
@@ -137,9 +136,9 @@ class Captcha_Elementor_Pro_Forms
     public function admin_notice_missing_elementor()
     {
         $message = sprintf(
-            esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'captcha-elementor-pro'),
-            '<strong>' . esc_html__('Captcha for Elementor Pro Forms', 'captcha-elementor-pro') . '</strong>',
-            '<strong>' . esc_html__('Elementor', 'captcha-elementor-pro') . '</strong>'
+            esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'captcha-for-elementor-pro-forms'),
+            '<strong>' . esc_html__('Captcha for Elementor Pro Forms', 'captcha-for-elementor-pro-forms') . '</strong>',
+            '<strong>' . esc_html__('Elementor', 'captcha-for-elementor-pro-forms') . '</strong>'
         );
 
         printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
@@ -148,10 +147,10 @@ class Captcha_Elementor_Pro_Forms
     public function admin_notice_missing_elementor_pro()
     {
         $message = sprintf(
-            esc_html__('"%1$s" requires "%2$s" or "%3$s" to be installed and activated.', 'captcha-elementor-pro'),
-            '<strong>' . esc_html__('Captcha for Elementor Pro Forms', 'captcha-elementor-pro') . '</strong>',
-            '<strong>' . esc_html__('Elementor Pro', 'captcha-elementor-pro') . '</strong>',
-            '<strong>' . esc_html__('Pro Elements', 'captcha-elementor-pro') . '</strong>'
+            esc_html__('"%1$s" requires "%2$s" or "%3$s" to be installed and activated.', 'captcha-for-elementor-pro-forms'),
+            '<strong>' . esc_html__('Captcha for Elementor Pro Forms', 'captcha-for-elementor-pro-forms') . '</strong>',
+            '<strong>' . esc_html__('Elementor Pro', 'captcha-for-elementor-pro-forms') . '</strong>',
+            '<strong>' . esc_html__('Pro Elements', 'captcha-for-elementor-pro-forms') . '</strong>'
         );
 
         printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
@@ -160,9 +159,9 @@ class Captcha_Elementor_Pro_Forms
     public function admin_notice_minimum_elementor_pro_version()
     {
         $message = sprintf(
-            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'captcha-elementor-pro'),
-            '<strong>' . esc_html__('Captcha for Elementor Pro Forms', 'captcha-elementor-pro') . '</strong>',
-            '<strong>' . esc_html__('Elementor Pro', 'captcha-elementor-pro') . '</strong>',
+            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'captcha-for-elementor-pro-forms'),
+            '<strong>' . esc_html__('Captcha for Elementor Pro Forms', 'captcha-for-elementor-pro-forms') . '</strong>',
+            '<strong>' . esc_html__('Elementor Pro', 'captcha-for-elementor-pro-forms') . '</strong>',
             '2.0'
         );
 

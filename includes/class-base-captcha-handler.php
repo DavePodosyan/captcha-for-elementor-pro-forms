@@ -75,7 +75,7 @@ abstract class CEPF_Base_Captcha_Handler
             static::get_script_name(),
             static::get_captcha_api_url(),
             [],
-            false,
+            null,
             true
         );
 
@@ -132,7 +132,7 @@ abstract class CEPF_Base_Captcha_Handler
         $captcha_response = Utils::_unstable_get_super_global_value($_POST, static::get_response_field_name());
 
         if (empty($captcha_response)) {
-            $ajax_handler->add_error($field['id'], esc_html__('The Captcha field cannot be blank. Please enter a value.', 'captcha-elementor-pro'));
+            $ajax_handler->add_error($field['id'], esc_html__('The Captcha field cannot be blank. Please enter a value.', 'captcha-for-elementor-pro-forms'));
             return;
         }
 
@@ -156,7 +156,7 @@ abstract class CEPF_Base_Captcha_Handler
 
         if (is_wp_error($response)) {
             $ajax_handler->add_error($field['id'], sprintf(
-                esc_html__('Connection error: %s', 'captcha-elementor-pro'),
+                esc_html__('Connection error: %s', 'captcha-for-elementor-pro-forms'),
                 $response->get_error_message()
             ));
             return;
@@ -166,7 +166,7 @@ abstract class CEPF_Base_Captcha_Handler
 
         if (200 !== (int) $response_code) {
             $ajax_handler->add_error($field['id'], sprintf(
-                esc_html__('Can not connect to the captcha server (%d).', 'captcha-elementor-pro'),
+                esc_html__('Can not connect to the captcha server (%d).', 'captcha-for-elementor-pro-forms'),
                 $response_code
             ));
             return;
