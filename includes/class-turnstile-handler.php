@@ -179,10 +179,11 @@ class CEPF_Turnstile_Handler extends CEPF_Base_Captcha_Handler
                 'label' => esc_html__('Style', 'captcha-elementor-pro'),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
+                    'auto' => esc_html__('Auto', 'captcha-elementor-pro'),
                     'light' => esc_html__('Light', 'captcha-elementor-pro'),
                     'dark' => esc_html__('Dark', 'captcha-elementor-pro'),
                 ],
-                'default' => 'light',
+                'default' => 'auto',
                 'condition' => [
                     'field_type' => $this->get_captcha_name(),
                 ],
